@@ -24,6 +24,12 @@ class App extends React.Component {
                 transparent self-governance for the
                 worldwide cannabis industry
               </h2>
+              <p>
+                For Companies
+              </p>
+              <p>
+                For Cannabis Patients & Consumers
+              </p>
               <p className="App-intro">
                 The cannaledger is an open, distributed blockchain for recording
                 actions undertaken by workers in the cannabis industry.
@@ -52,7 +58,7 @@ class App extends React.Component {
                 If you're technically inclined, we encourage you to develop
                 your own interfaces to the blockchain itself. Otherwise the
                 Cannaledger Incorporation offers workplace interfaces available
-                for just $10 per employee per month.
+                for $10 per employee per month.
               </p>
               <CannaledgerForLicensedEstablishements />
               <CannaledgerForAncillaryCompanies />
