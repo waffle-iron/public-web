@@ -1,15 +1,108 @@
 import * as React from 'react';
+import {
+  BrowserRouter as Router,
+  Link,
+  Redirect,
+  Route,
+  withRouter,
+} from 'react-router-dom';
 
-const PortalRoute = () => {
-  return (
-    <div className="Portal">
-      <h1>Cannaledger for Ancillary Companies</h1>
-      Compliance doesn't stop at the establishment entities. Companies that
-      support the cannabis industry ought to be transparent about their data as
-      well. For instance, a nutrient company should disclose their ingredients
-      and storage conditions to best ensure patient safety with a safe product.
+const AuthExample = () => (
+  <Router>
+    <div>
+      <AuthButton />
+      <ul>
+        <li>
+          <Link to="/public">Public Page</Link>
+        </li>
+        <li>
+          <Link to="/protected">Protected Page</Link>
+        </li>
+      </ul>
+      <Route path="/public" component={Public} />
+      <Route path="/login" component={Login} />
+      <PrivateRoute path="/protected" component={Protected} />
     </div>
-  );
+  </Router>
+);
+
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 100);
+  },
 };
 
-export default PortalRoute;
+const AuthButton = withRouter(
+  ({ history }) =>
+    fakeAuth.isAuthenticated ? (
+      <p>
+        Welcome!{' '}
+        <button
+          onClick={() => {
+            fakeAuth.signout(() => history.push('/'));
+          }}
+        >
+          Sign out
+        </button>
+      </p>
+    ) : (
+      <p>You are not logged in.</p>
+    )
+);
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      fakeAuth.isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: props.location },
+          }}
+        />
+      )
+    }
+  />
+);
+
+const Public = () => <h3>Public</h3>;
+const Protected = () => <h3>Protected</h3>;
+
+class Login extends React.Component {
+  public state = {
+    redirectToReferrer: false,
+  };
+
+  public login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
+
+  public render() {
+    const { from } = { from: { pathname: '/' } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+
+    return (
+      <div>
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
+      </div>
+    );
+  }
+}
+
+export default AuthExample;

@@ -457,6 +457,10 @@ autoprefixer@^6.3.1:
     postcss "^5.2.16"
     postcss-value-parser "^3.2.3"
 
+aws-amplify-react@^0.1.34:
+  version "0.1.34"
+  resolved "https://registry.yarnpkg.com/aws-amplify-react/-/aws-amplify-react-0.1.34.tgz#a8aaf431585920094947e7cfb400f654792ab3f3"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
