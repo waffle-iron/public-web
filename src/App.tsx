@@ -5,6 +5,7 @@ import CannaledgerForAncillaryCompanies from './components/cannaledger-for-ancil
 import CannaledgerForLicensedEstablishements from './components/cannaledger-for-licensed-establishments';
 import ParticipatingAncillaryCompanies from './components/participating-ancillary-companies';
 import ParticipatingLicensedEntities from './components/participating-licensed-entities';
+import Portal from './routes/portal';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import ApolloClient from 'apollo-client';
@@ -15,6 +16,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 
 import AppReducer from './reducers';
+
+import { Link, Route } from 'react-router-dom';
 
 const store = createStore(AppReducer);
 const uri = 'http://localhost:4200/graphql';
@@ -31,6 +34,10 @@ const App = () => {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
+            <Link to="/portal">Log into the portal</Link>
+
+            <Route path="/portal" component={Portal} />
+
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">Cannaledger</h1>
