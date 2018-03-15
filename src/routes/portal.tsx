@@ -1,14 +1,18 @@
 import { withAuthenticator } from 'aws-amplify-react';
 import * as React from 'react';
 
-import { Link, Route } from 'react-router-dom';
-import Info from '../routes/info';
+import { NavLink, Route } from 'react-router-dom';
+import Info from './info';
 
 const Portal = ({ match }) => {
   return (
     <div>
-      <Link to={match.url + '/settings'}>Settings</Link>
-      <Link to={match.url + '/plants'}>Plants</Link>
+      <NavLink activeClassName="is-active" to={match.url + '/settings'}>
+        Settings
+      </NavLink>
+      <NavLink activeClassName="is-active" to={match.url + '/plants'}>
+        Plants
+      </NavLink>
 
       <Route path={match.url + '/settings'} component={Info} />
       <Route path={match.url + '/plants'} component={Info} />

@@ -14,7 +14,7 @@ import { createStore } from 'redux';
 
 import AppReducer from './reducers';
 
-import { Link, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 
 import Amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
@@ -34,8 +34,8 @@ const App = () => {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
-            <Link to="/portal">Log into the portal</Link>
-            <Link to="/info">Info</Link>
+            <NavLink to="/portal">Log into the portal</NavLink>
+            <NavLink to="/info">Info</NavLink>
 
             <Route exact path="/" component={Info} />
             <Route path="/portal" component={Portal} />
