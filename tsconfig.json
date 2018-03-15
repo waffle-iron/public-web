@@ -8,7 +8,6 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -23,14 +22,12 @@
     },
     "noUnusedLocals": true
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build",
-    "scripts",
-    "config",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "src/test"
   ]
 }
