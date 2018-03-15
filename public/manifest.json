@@ -1,6 +1,6 @@
 {
-  "short_name": "Cannaledger app",
-  "name": "Create React App Sample",
+  "short_name": "Cannaledger Web App",
+  "name": "Cannaledger Web Application",
   "icons": [
     {
       "src": "favicon.ico",
