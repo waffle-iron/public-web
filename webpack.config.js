@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -27,6 +28,15 @@ module.exports = {
             "sass-loader"
           ]
         })
+      },
+      {
+        test: /(src|public).*\.(png|jpg|gif|svg|ico|json)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
       }
     ]
   },
@@ -38,6 +48,9 @@ module.exports = {
   ],
   devtool: "source-map",
   resolve: {
-    extensions: [".ts", ".tsx"]
+    extensions: [".ts", ".tsx", ".js", ".svg", ".png", ".jpg", ".gif"],
+    plugins: [
+      new TsconfigPathsPlugin()
+    ]
   }
 }
