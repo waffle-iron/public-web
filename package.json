@@ -19,7 +19,7 @@
     "redux-form": "^7.3.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack --bail --env dist -p",
     "test": "cross-env NODE_ENV=test mocha --opts src/test/mocha.opts",
     "test-with-coverage": "cross-env NODE_ENV=test nyc mocha --opts src/test/mocha.opts",
