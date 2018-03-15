@@ -15,6 +15,12 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "src",
+    "paths": {
+      "config/*": [ "config/*" ],
+      "components/*": [ "components/*" ],
+      "routes/*": [ "routes/*" ]
+    },
     "noUnusedLocals": true
   },
   "exclude": [
