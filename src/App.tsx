@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './App.sass';
 
 import Info from './routes/info';
 import Portal from './routes/portal';
