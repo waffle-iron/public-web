@@ -35,9 +35,9 @@ const App = () => {
         <BrowserRouter>
           <div className="App">
             <Link to="/portal">Log into the portal</Link>
-            <Link to="/info">Get Info</Link>
+            <Link to="/info">Info</Link>
 
-            <Route path="/info" component={Info} />
+            <Route exact path="/" component={Info} />
             <Route path="/portal" component={Portal} />
           </div>
         </BrowserRouter>
